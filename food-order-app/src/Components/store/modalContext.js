@@ -1,6 +1,8 @@
 
 import React, { useState, useContext } from 'react';
-const ModalContext = React.createContext();
+const ModalContext = React.createContext({
+    modalIsOpen: false,
+});
 const ModalUpdateContext = React.createContext();
 
 export function useModal() {

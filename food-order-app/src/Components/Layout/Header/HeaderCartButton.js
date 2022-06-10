@@ -1,10 +1,11 @@
 import classes from './HeaderCart.module.css';
-import CartIcon from '../../Cart/CartIcon'
+import CartIcon from '../../Cart/CartIcon';
+import { useContext } from 'react';
 import { useModal, useModalUpdate } from '../../store/modalContext';
 import ModalContext from '../../store/modalContext';
 
 const HeaderCartButton = (props) => {
-    const toggleModal = useModalUpdate();
+    // const toggleModal = useModalUpdate();
     const ctx = useContext(ModalContext);
     return (
         <button className={`${classes.button}`} onClick={props.onClick}>
