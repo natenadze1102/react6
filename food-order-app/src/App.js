@@ -7,10 +7,10 @@ import Cart from './Components/Cart/Cart';
 function App() {
   return (
     <Fragment>
+      <Cart />
       <Header />
       <main>
         <Meals />
-        <Cart />
       </main>
     </Fragment>
   );
