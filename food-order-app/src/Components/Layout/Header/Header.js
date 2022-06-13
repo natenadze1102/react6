@@ -1,26 +1,20 @@
-import { Fragment, useState } from 'react';
-import mealsImage from '../../../assets/meals.jpg'
+import { Fragment } from 'react';
+import mealsImage from '../../../assets/meals.jpg';
 import styles from './Header.module.css';
 import HeaderCartButton from './HeaderCartButton';
 
-const Header = () => {
-    const [modalIsOpen, setModalIsOpen] = useState(false)
-    const handleClick = () => {
-        console.log('isClicked')
-    }
+const Header = (props) => {
+  return (
+    <Fragment>
+      <header className={styles.header}>
+        <h1>ReactMeals</h1>
+        <HeaderCartButton onClick={props.onShowCart} />
+      </header>
+      <div className={styles['main-image']}>
+        <img src={mealsImage} alt="main-meal" />
+      </div>
+    </Fragment>
+  );
+};
 
-    return (
-        <Fragment>
-            <header className={styles.header}>
-                <h1>ReactMeals</h1>
-                <HeaderCartButton onClick={handleClick} />
-            </header>
-            <div className={styles['main-image']}>
-                {/* <img src={require('./../../../assets/meals.jpg').default} /> */}
-                <img src={mealsImage} alt='main-meal-image' />
-            </div>
-        </Fragment>
-    )
-}
-
-export default Header
+export default Header;

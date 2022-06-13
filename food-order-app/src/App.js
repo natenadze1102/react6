@@ -1,36 +1,29 @@
 import './App.css';
 
-import { Fragment, useState, useContext } from 'react';
+import { useState } from 'react';
 import Header from './Components/Layout/Header/Header';
 import Meals from './Components/Meals/Meals';
 import Cart from './Components/Cart/Cart';
-// import ModalContext from './Components/store/modalContext';
-import { ModalContextProvider } from './Components/store/modalContext';
-import ModalContext from './Components/store/modalContext';
-import { useModalUpdate } from './Components/store/modalContext';
+import ContextProvider from './Components/store/cart-context';
 
 function App() {
-  const toggleModal = useModalUpdate();
-  const [modalIsOpen, setModalIsOpen] = useState(true);
-  const ctx = useContext(ModalContext)
+  const [cartIsShown, setCartIsShown] = useState(false);
+  const showCartHandler = () => {
+    // console.log('testClick');
+    setCartIsShown(true);
+  };
+  const hideCartHandler = () => {
+    setCartIsShown(false);
+  };
 
-  const onCloseCart = () => {
-    setModalIsOpen(false)
-    console.log('xx')
-    console.log(ctx)
-  }
-  // const toggler = useContext(ModalContext)
   return (
-    <ModalContextProvider>
-      {
-        ctx.modalIsOpen && <Cart onClick={onCloseCart} />
-      }
-      <Header />
+    <ContextProvider>
+      {cartIsShown && <Cart onClose={hideCartHandler} />}
+      <Header onShowCart={showCartHandler} />
       <main>
         <Meals />
       </main>
-
-    </ModalContextProvider>
+    </ContextProvider>
   );
 }
 
